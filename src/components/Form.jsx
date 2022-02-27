@@ -82,7 +82,12 @@ const Form = () => {
         let newPassword = "";
         for (let j = 0; j < settings.length; j++) {
           let newChar;
-          if (settings.isLetterFirst && j === 0 && !settings.isNumberOnly) {
+          if (
+            settings.isLetterFirst &&
+            j === 0 &&
+            !settings.isNumberOnly &&
+            (settings.includeLowerCase || settings.includeUpperCase)
+          ) {
             let tempCharset = [];
             if (settings.includeLowerCase) {
               tempCharset = tempCharset.concat(lowerCase);
@@ -97,11 +102,10 @@ const Form = () => {
           }
           newPassword = newPassword + newChar;
         }
-        newPasswords.push(newPassword)
+        newPasswords.push(newPassword);
       }
       setPassword(newPasswords.join("\n"));
     }
-
   }
 
   function handleCopy(e) {
@@ -280,7 +284,7 @@ const Form = () => {
                 <input
                   type="checkbox"
                   checked={
-                    settings.isNumberOnly ? false : settings.isLetterFirst
+                    settings.isNumberOnly ? false : (!settings.includeUpperCase && !settings.includeLowerCase ? false : settings.isLetterFirst)
                   }
                   id="letterFirst"
                   onChange={(e) =>
