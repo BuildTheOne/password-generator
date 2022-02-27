@@ -82,7 +82,7 @@ const Form = () => {
         let newPassword = "";
         for (let j = 0; j < settings.length; j++) {
           let newChar;
-          if (settings.isLetterFirst && j === 0) {
+          if (settings.isLetterFirst && j === 0 && !settings.isNumberOnly) {
             let tempCharset = [];
             if (settings.includeLowerCase) {
               tempCharset = tempCharset.concat(lowerCase);
