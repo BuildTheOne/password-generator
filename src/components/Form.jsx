@@ -117,7 +117,7 @@ const Form = () => {
 
   return (
     <div className="flex flex-col w-full md:w-1/2 dark:text-white gap-8 my-8">
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="flex flex-col p-4 w-full gap-3 text-lg">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col md:flex-row gap-2 md:items-center md:justify-between md:mx-8">
@@ -248,7 +248,10 @@ const Form = () => {
 
           <div className="flex flex-col justify-center bg-gray-200 dark:bg-slate-700 rounded-lg p-3 gap-2">
             <button
-              onClick={() => openAdvanced(!advanced)}
+              onClick={(e) => {
+                openAdvanced(!advanced);
+                e.preventDefault();
+              }}
               className="flex justify-center items-center"
             >
               <p>Advanced Settings</p>
@@ -284,7 +287,11 @@ const Form = () => {
                 <input
                   type="checkbox"
                   checked={
-                    settings.isNumberOnly ? false : (!settings.includeUpperCase && !settings.includeLowerCase ? false : settings.isLetterFirst)
+                    settings.isNumberOnly
+                      ? false
+                      : !settings.includeUpperCase && !settings.includeLowerCase
+                      ? false
+                      : settings.isLetterFirst
                   }
                   id="letterFirst"
                   onChange={(e) =>
@@ -365,6 +372,7 @@ const Form = () => {
             type="submit"
             className="p-2 bg-gray-300 dark:bg-slate-700 hover:bg-gray-400 dark:hover:bg-slate-600 rounded-md w-full text-lg font-semibold"
             title="Generate Password"
+            onClick={(e) => handleSubmit(e)}
           >
             Generate
           </button>

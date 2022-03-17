@@ -33,7 +33,7 @@ const Menu = ({ isDarkMode, handleDarkMode }) => {
           onClick={(e) => handleDarkMode(e)}
           title={isDarkMode ? "Switch to Light Side" : "Switch to Dark Side"}
         >
-          {isDarkMode ? (
+          {!isDarkMode ? (
             <svg
               className="w-8 h-8 text-white"
               fill="currentColor"
