@@ -1,3 +1,7 @@
+WARNING: THIS REPOSITORY IS NO LONGER MAINTAINED AND USED AS PORTFOLIO. BASIC CODE OF THIS APP IS USED IN [HERE](https://github.com/BuildTheOne/buildtheone-tools/settings)
+
+---
+
 # Password Generator
 
 Well, it's pretty straightforward. What else did you expect?
